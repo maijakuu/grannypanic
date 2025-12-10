@@ -1,4 +1,4 @@
-# Grannypanic!
+# GrannyPanic!
 
 ## Description
 This game project was done as part of ICT-engineering degree during autumn 2025. The idea was to create a game with physics as realistic as possible and the game should be suitable for exhibition use, so the playthrough time shouldn't exceed 3 minutes. 
