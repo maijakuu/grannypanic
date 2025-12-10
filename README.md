@@ -5,7 +5,9 @@ This game project was done as part of ICT-engineering degree during autumn 2025.
 
 We ended up with an idea, where a sweet granny has to make her way to the store as fast as possible using a wheelchair. The 'realistic physics' -part was executed by us building the controller directly into a real wheelchair. We used two ESP32 for the controllers on each side of the wheels (please refer to the folder "SUUNNITTELU" for images of the final version of the wheelchair setup). The movement of the wheels is tracked by two magnetic Hall sensors (1GT101DC), one on each side of the wheels. In addition to this we 3D-printed a wheel with embedded holes for 8mm magnets and the movement was tracked by the change in magnetic force by the magnets passing. Blender model of the magnetic wheel can also be found from the "SUUNNITTELU" -folder.
 
-This repository is mainly done to showcase the project as a whole, the codes aren't optimized and the final version of the game is far from "perfect". PLEASE NOTE THAT THIS GAME WAS DONE WITH UNITY VERSION 6000.2.2f1.
+This repository is mainly done to showcase the project as a whole, the scripts aren't optimized and the final version of the game is far from "perfect". Due to the ICT-degree programme being in finnish, also parts of the project (meaning the script names, the different variables in scripts, asset names, sounds etc.) were mostly executed using finnish. 
+
+PLEASE NOTE THAT THIS GAME WAS DONE WITH UNITY VERSION [6000.2.2f1.](https://unity.com/security/sept-2025-01)
 
 ## Visuals
 ![Description](Traileri/visuals1.gif)
