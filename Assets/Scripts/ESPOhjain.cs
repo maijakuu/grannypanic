@@ -13,15 +13,6 @@ public class EspOhjain : MonoBehaviour
     [SerializeField]
     string serverilleMenevaViesti = "heippa";
 
-/*
-    int oikeaAnturi;
-
-    int nappi;
-
-    int kytkinE;
-*/
-
-
     public ESPDatat espData = new ESPDatat();
 
     CancellationTokenSource yhteysPoletti;
@@ -44,9 +35,8 @@ public class EspOhjain : MonoBehaviour
         using (ClientWebSocket soketti = new ClientWebSocket())
         {
             //muistakaa vaihtaa ip osoite wifin mukaan
-            Uri osoite = new Uri("ws://172.16.200.134:80");
+            Uri osoite = new Uri("tähän ip");
             yhteysPoletti = new CancellationTokenSource();
-            //yhteysPoletti.CancelAfter(20000);
             await soketti.ConnectAsync(osoite, yhteysPoletti.Token);
             Debug.Log("Soketti yhteys ESP32 luotu");
 
@@ -76,7 +66,6 @@ public class EspOhjain : MonoBehaviour
                     }
                 }
                 string vastaanottettuviesti = Encoding.UTF8.GetString(vastaanOtto, 0, offset);
-                //Debug.Log("Vastaanotettiin viesti: " + vastaanottettuviesti);
                 espData = JsonUtility.FromJson<ESPDatat>(vastaanottettuviesti);
             }
         }

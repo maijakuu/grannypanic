@@ -9,7 +9,6 @@ public class GameManager : MonoBehaviour
     private void Start()
     {
         gameTimer = Object.FindFirstObjectByType<GameTimer>();
-        //EnterNameCanvas.SetActive(false);
     }
 
     void Update()
