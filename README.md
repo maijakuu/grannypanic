@@ -17,6 +17,8 @@ PLEASE NOTE THAT THIS GAME WAS DONE WITH UNITY VERSION [6000.2.2f1.](https://uni
 ## Authors and acknowledgment
 This project was a team-effort and done in collaboration with @saarailtanen, @mkangash & @Lauri. Special thanks to Tiitus Tulla for making the GrannyPanic! -soundtrack. 
 
+The assets used are free assets downloaded from the Unity store and are included in the project files.
+
 ## License
 MIT License
 
