@@ -4,8 +4,8 @@
 
 #define vasenAnturi_PIN 14
 
-#define WIFI_YHTEYS "IOTLABRA"
-#define WIFI_SALASANA "iotlabra2020"
+#define WIFI_YHTEYS "xxxxxxxxxx"
+#define WIFI_SALASANA "xxxxxxxxxxx"
 #define PORTTI 80
 WiFiServer serveri(PORTTI);
 WebSocketServer sokettiServeri;
@@ -16,9 +16,8 @@ unsigned long currentTime = 0;
 float rpm = 0;
 float smoothedRPM = 0;
 
-const unsigned long measurementInterval = 100; // update every 50 ms
+const unsigned long measurementInterval = 100;
 
-//tää testikohta
 const int BUFFER_SIZE = 2;
 float rpmBuffer[BUFFER_SIZE] = {0};
 int bufferIndex = 0;
@@ -35,7 +34,7 @@ float getAverageRPM() {
     }
     return sum / BUFFER_SIZE;
 }
-//loppuu tähän
+
 
 void IRAM_ATTR countPulse() {
   pulseCount++;
@@ -106,15 +105,12 @@ void loop() {
             rpm = (pulseCount * 60.0) / intervalSeconds;
             Serial.print("RPM: ");
             Serial.println(rpm);
-            //testi
             addToRPMBuffer(rpm);
             smoothedRPM = getAverageRPM();
-            //loppuu tähän
             pulseCount = 0; // Reset pulse count
             lastTime = currentTime;
           }
 
-        //int new_rpm1 = rpm / 9;
         int new_rpm1 = smoothedRPM / 15;
         Serial.println(new_rpm1);
 
@@ -123,7 +119,6 @@ void loop() {
         String lahetettavaData;
         serializeJson(jsondokkari, lahetettavaData);
         sokettiServeri.sendData(lahetettavaData);
-        //tähän delay?
       }
     }
     delay(100);

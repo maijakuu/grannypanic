@@ -7,8 +7,8 @@
 #define nappi_PIN 14 
 
 
-#define WIFI_YHTEYS "IOTLABRA"
-#define WIFI_SALASANA "iotlabra2020"
+#define WIFI_YHTEYS "xxxxxxxx"
+#define WIFI_SALASANA "xxxxxxxx"
 #define PORTTI 80
 WiFiServer serveri(PORTTI);
 WebSocketServer sokettiServeri;
@@ -21,10 +21,8 @@ float smoothedRPM = 0;
 
 String lahetettavaData;
 
-const unsigned long measurementInterval = 100; // update every 50 ms
+const unsigned long measurementInterval = 100; 
 
-
-//tää testikohta
 const int BUFFER_SIZE = 2;
 float rpmBuffer[BUFFER_SIZE] = {0};
 int bufferIndex = 0;
@@ -41,8 +39,6 @@ float getAverageRPM() {
     }
     return sum / BUFFER_SIZE;
 }
-//loppuu tähän
-
 
 void IRAM_ATTR countPulse() {
   pulseCount++;
@@ -55,7 +51,7 @@ pinMode(oikeaAnturi_PIN, INPUT_PULLUP);
 pinMode(nappi_PIN, INPUT_PULLUP);
 pinMode(kytkinEteen_PIN, INPUT_PULLUP);
 
-attachInterrupt(digitalPinToInterrupt(oikeaAnturi_PIN), countPulse, FALLING); // Trigger on falling edge
+attachInterrupt(digitalPinToInterrupt(oikeaAnturi_PIN), countPulse, FALLING); 
 lastTime = millis();
 
 
@@ -100,7 +96,6 @@ void loop() {
       String tieto;
       while(kuuntelija.connected())
       {
-        // Luetaan tietoa soketista
         tieto = sokettiServeri.getData();
         if ( tieto.length() > 0)
         {
@@ -111,20 +106,14 @@ void loop() {
 
           unsigned long currentTime = millis();
           if (currentTime - lastTime >= measurementInterval) {
-            float intervalSeconds = (currentTime - lastTime) / 1000.0; // convert ms to s
+            float intervalSeconds = (currentTime - lastTime) / 1000.0;
             rpm = (pulseCount * 60.0) / intervalSeconds;
-            //Serial.print("RPM: ");
-            //Serial.println(rpm);
-            //testi
             addToRPMBuffer(rpm);
             smoothedRPM = getAverageRPM();
-            //Serial.println(smoothedRPM);
-            //loppuu tähän
-            pulseCount = 0; // Reset pulse count
+            pulseCount = 0; 
             lastTime = currentTime;
           }
 
-        //int new_rpm1 = rpm / 9;
         int new_rpm1 = smoothedRPM / 9;
         Serial.println(new_rpm1);
 
@@ -140,7 +129,6 @@ void loop() {
         String lahetettavaData;
         serializeJson(jsondokkari, lahetettavaData);
         sokettiServeri.sendData(lahetettavaData);
-        //tähän delay?
       }
     }
     delay(100);
